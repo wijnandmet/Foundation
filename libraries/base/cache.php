@@ -22,8 +22,15 @@ Class Cache {
 	}
 
 	public static function save($data, $key, $group = 'default') {
-		File::create(self::$dir . '/' . serialize($group . $key));
-		return true;
+		return File::create(self::$dir . '/' . String::replace('.','/',$group) . '/' . serialize($key),$data);
+	}
+	
+	public static function flush($group = '') {
+		// flush with group (if no group, then everything)
+	}
+	
+	public static function remove($group,$key) {
+		// remove 1 cache file	
 	}
 
 }
