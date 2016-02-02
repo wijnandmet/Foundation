@@ -1,14 +1,14 @@
 # Foundation
+<br /><br />
+What I have to do:<br />
+» create libraries<br />
+» test libraries<br />
+» create structure of website<br />
+» create template/view structure (templates has files, config-files (every file has a config file), css, img, js, fonts, etc.)<br />
+» create a root website (based on pages)<br />
+» create a cms<br />
+» show website based on domainname<br />
+» add languages (in db? Yes I think so)<br />
+» front edit<br /><br />
 
-What I have to do:
-» create libraries
-» test libraries
-» create structure of website
-» create template/view structure (templates has files, config-files (every file has a config file), css, img, js, fonts, etc.)
-» create a root website (based on pages)
-» create a cms
-» show website based on domainname
-» add languages (in db? Yes I think so)
-» front edit
-
-» and much more
+» and much more<br />
