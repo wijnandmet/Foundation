@@ -5,7 +5,7 @@ Namespace Libraries\Base;
 
 Class Cache {
 
-	protected static $dir = 'cache';
+	public static $dir = 'cache';
 	
 	protected static $cacheTime = (5*60);
 
