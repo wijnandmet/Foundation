@@ -12,3 +12,9 @@ What I have to do:<br />
 » front edit<br /><br />
 
 » and much more<br />
+
+<br /><br />
+
+
+Add:<br />
+» header('Content-Type: text/html; charset=utf-8');
