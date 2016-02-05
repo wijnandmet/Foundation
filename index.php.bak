@@ -1,0 +1,78 @@
+<?php 
+header('Content-Type: text/html; charset=utf-8');
+
+require_once __DIR__.'/autoload.php';
+
+
+
+// hier een header class voor maken
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+$request = Request::createFromGlobals();
+
+$input = $request->get('name', 'World');
+
+$response = new Response(sprintf('Hello %s', htmlspecialchars($input, ENT_QUOTES, 'UTF-8')));
+
+$response->send();
+
+echo '<pre>';
+// the URI being requested (e.g. /about) minus any query parameters
+var_dump($request->getPathInfo());
+
+// retrieve GET and POST variables respectively
+var_dump($request->query->get('foo'));
+var_dump($request->request->get('bar', 'default value if bar does not exist'));
+
+// retrieve SERVER variables
+var_dump($request->server->get('HTTP_HOST'));
+
+// retrieves an instance of UploadedFile identified by foo
+var_dump($request->files->get('foo'));
+
+// retrieve a COOKIE value
+var_dump($request->cookies->get('PHPSESSID'));
+
+// retrieve an HTTP request header, with normalized, lowercase keys
+var_dump($request->headers->get('host'));
+var_dump($request->headers->get('content_type'));
+
+var_dump($request->getMethod());    // GET, POST, PUT, DELETE, HEAD
+var_dump($request->getLanguages()); // an array of languages the client accepts
+
+//$request = Request::create('/index.php?name=Fabien');
+echo '</pre>';
+
+$response = new Response();
+
+$response->setContent('Hello world!');
+$response->setStatusCode(200);
+$response->headers->set('Content-Type', 'text/css');
+
+// configure the HTTP cache headers
+$response->setMaxAge(10);
+
+
+if ($myIp == $request->getClientIp()) { // save ipcheck
+    // the client is a known one, so give it some more privilege
+}
+
+
+// 'routes'
+$map = array(
+    '/hello' => __DIR__.'/hello.php',
+    '/bye'   => __DIR__.'/bye.php',
+);
+$path = $request->getPathInfo();
+if (isset($map[$path])) {
+    require $map[$path];
+} else {
+    $response->setStatusCode(404);
+    $response->setContent('Not Found');
+}
+$response->send();
+
+// test a url
+$request = Request::create('/hello?name=Fabien');
+?>
